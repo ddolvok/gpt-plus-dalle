@@ -12,19 +12,19 @@ openai.api_key = api_key
 
 def generate_response(user_input):
     user_role = "User: " + user_input
-    system_role = "System: Make a picture that feels like Disney. You should make it into a Disney cartoon style. Make a sentence around 80 characters."
+    system_role = "System: Make a picture that feels like Disney. You should make it into a Disney movie style. Make a sentence around 80 characters."
 
-    prompt = f"{user_role}\n{system_role}\nSystem:"
+    messages = [{"role": "system", "content": system_role}, {"role": "user", "content": user_input}]
 
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=messages,
         max_tokens=100,
         n=1,
         stop=None,
         temperature=0.7,
     )
-    return response.choices[0].text.strip()
+    return response.choices[0].message['content']
 
 def generate_image(prompt):
     response = requests.post(
