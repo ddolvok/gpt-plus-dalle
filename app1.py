@@ -12,7 +12,7 @@ openai.api_key = api_key
 
 def generate_response(user_input):
     user_role = "User: " + user_input
-    system_role = "System: Make a picture that feels like Disney movie. You should make it into a Disney style. Make a sentence around 150 characters. I want to get more detail and pretty adorable art. Answer in English!"
+    system_role = "System: Make a picture that feels like Disney. You should make it into a Disney animation style. Make a sentence around 150 characters. I want to get more detail and pretty adorable art. Answer in English!"
 
     messages = [{"role": "system", "content": system_role}, {"role": "user", "content": user_input}]
 
