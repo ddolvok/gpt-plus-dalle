@@ -12,14 +12,14 @@ openai.api_key = api_key
 
 def generate_response(user_input):
     user_role = "User: " + user_input
-    system_role = "System: Make a picture that feels like Disney. You should make it into a Disney movie style. Make a sentence around 80 characters."
+    system_role = "System: Make a picture that feels like Disney movie. You should make it into a Disney style. Make a sentence around 150 characters. I want to get more detail and pretty adorable art. Answer in English!"
 
     messages = [{"role": "system", "content": system_role}, {"role": "user", "content": user_input}]
 
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=100,
+        max_tokens=300,
         n=1,
         stop=None,
         temperature=0.7,
@@ -39,7 +39,7 @@ def display_response(response):
         st.markdown(response)
 
 # 타이틀
-st.title("GPT plus DALL-E (feat. Disney)")
+st.title("GPT plus DALL-E (feat. Disney!)")
 
 # 텍스트 필드
 st.markdown("#### prompt")
